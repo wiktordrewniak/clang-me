@@ -13,7 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install Dependencies
-      run: sudo apt-get install cmake ninja-build -y
+      run: |
+            sudo apt-get update
+            sudo apt-get remove -y clang-6.0 libclang-common-6.0-dev libclang1-6.0 libllvm6.0
+            sudo apt-get autoremove
+            sudo apt-get install cmake ninja-build clang-format-6.0 -y
     - name: configure for ninja
       if: matrix.build_tool == 'ninja'
       run: mkdir build && cd build && cmake -GNinja ..
