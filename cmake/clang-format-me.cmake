@@ -1,4 +1,6 @@
+# MIT License
 
+# Copyright (c) 2018-2019 Wiktor Drewniak
 set(CLANG_FORMAT_EXE clang-format-6.0)
 
 function(clang_format_me target_name)
