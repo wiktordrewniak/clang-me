@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install Dependencies
-      run: apt-get install cmake ninja-build
+      run: sudo apt-get install cmake ninja-build -y
     - name: configure for ninja
       if: matrix.build_tool == 'ninja'
       run: mkdir build && cd build && cmake -GNinja ..
