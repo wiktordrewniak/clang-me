@@ -13,12 +13,12 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install Dependencies
-      run: apt-get install cmake ninja-build
+      run: sudo apt-get install cmake ninja-build -y
     - name: configure for ninja
-      if: ${{ matrix.build_tool }} == 'ninja'
+      if: matrix.build_tool == 'ninja'
       run: mkdir build && cd build && cmake -GNinja ..
     - name: configure for make
-      if: ${{ matrix.build_tool }} == 'make'
+      if: matrix.build_tool == 'make'
       run: mkdir build && cd build && cmake ..
     - name: build
       run: cd build && cmake --build .
